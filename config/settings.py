@@ -40,10 +40,15 @@ DJANGO_APPS = [
 ]
 
 OWN_APPS = [
-    'blog'
+    'blog',
+    'member',
+]
+THIRD_PARTY_APPS = [
+    'django_extensions',
 ]
 
-INSTALLED_APPS = DJANGO_APPS + OWN_APPS
+INSTALLED_APPS = DJANGO_APPS + OWN_APPS + THIRD_PARTY_APPS
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -59,7 +64,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -108,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ko-KR"
 
 TIME_ZONE = "UTC"
 
@@ -126,3 +131,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = '/' # 로그인 후 리다이렉트 할 url (blog_list)
+LOGOUT_REDIRECT_URL = '/' # 로그아웃 후 리다이렉트 할 url
+
+LOGIN_URL = '/login/'
